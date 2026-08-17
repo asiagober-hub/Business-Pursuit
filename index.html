@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staffing Prospects</title>
+
+<style>
+*{box-sizing:border-box}
+
+:root{
+--olive:#65743a;
+--olive-dark:#4f5c2d;
+--olive-light:#eef1e5;
+--black:#111;
+--gray:#6b7280;
+--light:#f5f6f2;
+--white:#fff;
+--border:#e1e4da;
+}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:var(--light);
+color:var(--black);
+}
+
+button{
+cursor:pointer;
+font-family:inherit;
+}
+
+.topbar{
+background:var(--black);
+color:white;
+padding:18px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:21px;
+font-weight:800;
+}
+
+.logo span{
+color:#a7b77a;
+}
+
+.container{
+max-width:1250px;
+margin:auto;
+padding:25px;
+}
+
+.page-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:22px;
+}
+
+.page-header h1{
+margin:0 0 5px;
+font-size:27px;
+}
+
+.page-header p{
+margin:0;
+color:var(--gray);
+}
+
+.btn{
+border:0;
+border-radius:8px;
+padding:11px 16px;
+font-weight:700;
+}
+
+.btn-primary{
+background:var(--olive);
+color:white;
+}
+
+.btn-primary:hover{
+background:var(--olive-dark);
+}
+
+.btn-dark{
+background:var(--black);
+color:white;
+}
+
+.btn-light{
+background:white;
+border:1px solid var(--border);
+color:var(--black);
+}
+
+.btn-danger{
+background:#9f3030;
+color:white;
+}
+
+.kpis{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:15px;
+margin-bottom:22px;
+}
+
+.kpi{
+background:white;
+border:1px solid var(--border);
+border-radius:12px;
+padding:18px;
+}
+
+.kpi-label{
+color:var(--gray);
+font-size:13px;
+}
+
+.kpi-value{
+font-size:28px;
+font-weight:800;
+margin-top:7px;
+}
+
+.panel{
+background:white;
+border:1px solid var(--border);
+border-radius:12px;
+padding:20px;
+margin-bottom:20px;
+}
+
+.panel h2{
+margin-top:0;
+}
+
+.search-row{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+}
+
+.search-row input{
+flex:1;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.form-group{
+display:flex;
+flex-direction:column;
+}
+
+.full{
+grid-column:1/-1;
+}
+
+label{
+font-size:13px;
+font-weight:700;
+margin-bottom:6px;
+}
+
+input,select,textarea{
+width:100%;
+padding:11px;
+border:1px solid #d4d8cd;
+border-radius:7px;
+font-size:14px;
+background:white;
+}
+
+textarea{
+min-height:110px;
+resize:vertical;
+}
+
+.table-wrap{
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+text-align:left;
+font-size:12px;
+color:var(--gray);
+padding:12px 8px;
+border-bottom:1px solid var(--border);
+}
+
+td{
+padding:14px 8px;
+border-bottom:1px solid #edf0e9;
+}
+
+.company-link{
+color:var(--olive-dark);
+font-weight:800;
+cursor:pointer;
+}
+
+.badge{
+display:inline-block;
+padding:5px 9px;
+border-radius:20px;
+font-size:11px;
+font-weight:800;
+}
+
+.badge-good{
+background:#e4ead4;
+color:#435222;
+}
+
+.badge-medium{
+background:#f5efd5;
+color:#79651c;
+}
+
+.badge-low{
+background:#eeeeee;
+color:#555;
+}
+
+.account-header{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:15px;
+margin-bottom:20px;
+}
+
+.account-title{
+font-size:28px;
+font-weight:800;
+}
+
+.account-meta{
+color:var(--gray);
+margin-top:5px;
+}
+
+.account-actions{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.value-vault{
+background:var(--olive-light);
+border:1px solid #d6dec1;
+border-radius:12px;
+padding:18px;
+margin-bottom:20px;
+}
+
+.value-vault h2{
+color:var(--olive-dark);
+}
+
+.vault-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.vault-item{
+background:white;
+border-radius:8px;
+padding:13px;
+}
+
+.vault-item small{
+display:block;
+color:var(--gray);
+margin-bottom:5px;
+}
+
+.vault-item strong{
+font-size:18px;
+}
+
+.opportunity{
+font-size:25px;
+font-weight:800;
+color:var(--olive-dark);
+}
+
+.contact-card{
+background:#f8faf6;
+border:1px solid var(--border);
+border-radius:10px;
+padding:14px;
+margin-bottom:10px;
+}
+
+.contact-actions{
+display:flex;
+gap:7px;
+margin-top:10px;
+flex-wrap:wrap;
+}
+
+.call-workspace{
+border-left:5px solid var(--olive);
+}
+
+.prompt-box{
+background:#f7f8f4;
+border:1px solid var(--border);
+border-radius:10px;
+padding:17px;
+margin-bottom:15px;
+}
+
+.prompt-box h3{
+margin-top:0;
+}
+
+.objection-buttons{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-bottom:15px;
+}
+
+.objection-response{
+background:var(--olive-light);
+border:1px solid #d6dec1;
+border-radius:10px;
+padding:15px;
+display:none;
+}
+
+.response-option{
+background:white;
+border:1px solid var(--border);
+border-radius:8px;
+padding:12px;
+margin-top:9px;
+}
+
+.response-option strong{
+color:var(--olive-dark);
+}
+
+.history-item{
+border-left:3px solid var(--olive);
+padding:10px 14px;
+margin-bottom:12px;
+background:#fafbf8;
+}
+
+.history-item small{
+color:var(--gray);
+}
+
+.report-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.report-card{
+background:#f8faf6;
+border:1px solid var(--border);
+border-radius:10px;
+padding:16px;
+}
+
+.report-card strong{
+font-size:24px;
+display:block;
+margin-top:5px;
+}
+
+.template-card,
+.custom-card{
+background:#f8faf6;
+border:1px solid var(--border);
+border-radius:10px;
+padding:15px;
+margin-bottom:12px;
+}
+
+.empty{
+text-align:center;
+color:var(--gray);
+padding:30px;
+}
+
+.hidden{
+display:none!important;
+}
+
+@media(max-width:900px){
+.kpis{
+grid-template-columns:repeat(3,1fr);
+}
+
+.vault-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.report-grid{
+grid-template-columns:1fr 1fr;
+}
+}
+
+@media(max-width:650px){
+.container{
+padding:15px;
+}
+
+.kpis,
+.form-grid,
+.vault-grid,
+.report-grid{
+grid-template-columns:1fr;
+}
+
+.full{
+grid-column:auto;
+}
+
+.page-header,
+.account-header{
+flex-direction:column;
+align-items:stretch;
+}
+
+.search-row{
+flex-direction:column;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+<div class="logo">Asia <span>Staffing Prospects</span></div>
+<div>Sales Command Center</div>
+</header>
+
+<main class="container">
+
+<!-- DASHBOARD -->
+
+<section id="dashboard">
+
+<div class="page-header">
+<div>
+<h1>Prospect Command Center</h1>
+<p>Manage your staffing pipeline, calls, contacts and opportunities.</p>
+</div>
+
+<button class="btn btn-primary" onclick="showAddProspect()">
++ Add Prospect
+</button>
+</div>
+
+<div class="kpis">
+
+<div class="kpi">
+<div class="kpi-label">Prospects</div>
+<div class="kpi-value" id="kpiProspects">0</div>
+</div>
+
+<div class="kpi">
+<div class="kpi-label">Contacts</div>
+<div class="kpi-value" id="kpiContacts">0</div>
+</div>
+
+<div class="kpi">
+<div class="kpi-label">Calls</div>
+<div class="kpi-value" id="kpiCalls">0</div>
+</div>
+
+<div class="kpi">
+<div class="kpi-label">Follow-Ups</div>
+<div class="kpi-value" id="kpiFollowups">0</div>
+</div>
+
+<div class="kpi">
+<div class="kpi-label">Meetings</div>
+<div class="kpi-value" id="kpiMeetings">0</div>
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="page-header">
+<div>
+<h2>Prospect List</h2>
+<p>Click a company to open its prospect page.</p>
+</div>
+
+<button class="btn btn-dark" onclick="showReports()">
+📊 Reports
+</button>
+</div>
+
+<div class="search-row">
+<input
+id="prospectSearch"
+placeholder="Search company, contact, title or industry..."
+oninput="renderProspects()">
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Company</th>
+<th>Contacts</th>
+<th>Industry</th>
+<th>Open Jobs</th>
+<th>Oldest</th>
+<th>Opportunity</th>
+<th>Activity</th>
+</tr>
+</thead>
+
+<tbody id="prospectTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>📝 Quick Tools</h2>
+
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+
+<button class="btn btn-light" onclick="showTemplates()">
+✉️ Email Templates
+</button>
+
+<button class="btn btn-light" onclick="showObjectionManager()">
+💬 Objection Bank
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ADD PROSPECT -->
+
+<section id="addProspect" class="hidden">
+
+<div class="page-header">
+
+<div>
+<h1>Add Prospect</h1>
+<p>Create the company and first contact.</p>
+</div>
+
+<button class="btn btn-light" onclick="showDashboard()">
+← Back
+</button>
+
+</div>
+
+<div class="panel">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Company Name</label>
+<input id="newCompany" placeholder="ABC Construction">
+</div>
+
+<div class="form-group">
+<label>Industry</label>
+<select id="newIndustry">
+<option>Construction</option>
+<option>Warehouse</option>
+<option>Manufacturing</option>
+<option>Logistics</option>
+<option>Healthcare</option>
+<option>Staffing</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Location</label>
+<input id="newLocation" placeholder="Atlanta, GA">
+</div>
+
+<div class="form-group">
+<label>Open Positions</label>
+<input id="newPositions" type="number" min="0" placeholder="8">
+</div>
+
+<div class="form-group">
+<label>Oldest Position Open — Days</label>
+<input id="newDays" type="number" min="0" placeholder="60">
+</div>
+
+<div class="form-group">
+<label>Hiring Signal</label>
+<select id="newSignal">
+<option>Multiple Openings</option>
+<option>Hard-to-Fill Position</option>
+<option>Expansion</option>
+<option>High Turnover</option>
+<option>Urgent Hiring</option>
+<option>Unknown</option>
+</select>
+</div>
+
+<div class="form-group full">
+<label>Account Intelligence</label>
+<textarea id="newNotes" placeholder="Hiring challenges, growth, turnover, urgent positions, company information..."></textarea>
+</div>
+
+</div>
+
+<hr>
+
+<h3>First Contact</h3>
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Name</label>
+<input id="newContact" placeholder="Jane Smith">
+</div>
+
+<div class="form-group">
+<label>Title</label>
+<input id="newTitle" placeholder="HR Director">
+</div>
+
+<div class="form-group">
+<label>Phone</label>
+<input id="newPhone" placeholder="(404) 555-1234">
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input id="newEmail" placeholder="jane@company.com">
+</div>
+
+</div>
+
+<br>
+
+<button class="btn btn-primary" onclick="createProspect()">
+Create Prospect
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ACCOUNT -->
+
+<section id="account" class="hidden">
+
+<div class="page-header">
+
+<button class="btn btn-light" onclick="showDashboard()">
+← Back to Prospects
+</button>
+
+</div>
+
+<div id="accountContent"></div>
+
+</section>
+
+
+<!-- REPORTS -->
+
+<section id="reports" class="hidden">
+
+<div class="page-header">
+
+<div>
+<h1>📊 Reports</h1>
+<p>See the health and activity of your staffing pipeline.</p>
+</div>
+
+<button class="btn btn-light" onclick="showDashboard()">
+← Dashboard
+</button>
+
+</div>
+
+<div id="reportContent"></div>
+
+</section>
+
+
+<!-- TEMPLATES -->
+
+<section id="templates" class="hidden">
+
+<div class="page-header">
+
+<div>
+<h1>✉️ Email Templates</h1>
+<p>Reusable staffing outreach messages.</p>
+</div>
+
+<button class="btn btn-light" onclick="showDashboard()">
+← Dashboard
+</button>
+
+</div>
+
+<div class="panel">
+
+<div id="templateList"></div>
+
+<hr>
+
+<h2>Create Template</h2>
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Template Name</label>
+<input id="templateName">
+</div>
+
+<div class="form-group">
+<label>Subject</label>
+<input id="templateSubject">
+</div>
+
+<div class="form-group full">
+<label>Email Body</label>
+<textarea id="templateBody"></textarea>
+</div>
+
+</div>
+
+<br>
+
+<button class="btn btn-primary" onclick="saveTemplate()">
+Save Template
+</button>
+
+</div>
+
+</section>
+
+
+<!-- OBJECTIONS -->
+
+<section id="objectionManager" class="hidden">
+
+<div class="page-header">
+
+<div>
+<h1>💬 Objection Bank</h1>
+<p>Your saved objections and responses.</p>
+</div>
+
+<button class="btn btn-light" onclick="showDashboard()">
+← Dashboard
+</button>
+
+</div>
+
+<div class="panel">
+
+<div id="objectionManagerList"></div>
+
+<hr>
+
+<h2>Add Your Own Objection</h2>
+
+<div class="form-group">
+<label>Objection</label>
+<input id="managerObjection" placeholder="We already have a staffing company.">
+</div>
+
+<br>
+
+<div class="form-group">
+<label>Your Response</label>
+<textarea id="managerResponse"></textarea>
+</div>
+
+<br>
+
+<button class="btn btn-primary" onclick="saveCustomObjection()">
+Save Objection
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* =========================
+DATA
+========================= */
+
+let prospects =
+JSON.parse(localStorage.getItem("staffingProspectsFinal")) || [];
+
+let templates =
+JSON.parse(localStorage.getItem("staffingTemplatesFinal")) || [
+
+{
+name:"Initial Staffing Outreach",
+subject:"Staffing support for your hiring needs",
+body:`Hi {{contact}},
+
+I wanted to reach out regarding your current hiring needs at {{company}}.
+
+I'd be interested in learning more about the positions you're having the most difficulty filling and seeing whether our staffing resources could help.
+
+Would you be open to a quick conversation?
+
+Best,
+Asia`
+},
+
+{
+name:"Follow-Up",
+subject:"Following up on your hiring needs",
+body:`Hi {{contact}},
+
+I wanted to follow up regarding your hiring needs at {{company}}.
+
+If you're still working to fill positions, I'd be happy to discuss how our staffing resources may be able to help.
+
+Best,
+Asia`
+}
+
+];
+
+let objections =
+JSON.parse(localStorage.getItem("staffingObjectionsFinal")) || [
+
+{
+title:"Already Have Staffing Company",
+responses:[
+"I completely understand. A lot of companies already have a staffing partner. Where I usually find an opportunity is when there are positions that aren't getting filled quickly enough. Are there any roles your current provider is struggling with?",
+"That makes sense. I'm not looking to replace a relationship that's working. Are you completely covered on your harder-to-fill positions right now?",
+"Understood. If your current provider could handle every opening and every shift you needed, what would you say is the biggest challenge you're still dealing with?"
+]
+},
+
+{
+title:"Too Busy",
+responses:[
+"I understand. Let me make this quick. What is the hardest position you're trying to fill right now?",
+"I'll keep it brief. If I could identify one staffing gap that we're equipped to solve, would it be worth a two-minute conversation?",
+"No problem. Would it make more sense for me to call you later today, or is there a better day for a quick conversation?"
+]
+},
+
+{
+title:"No Budget",
+responses:[
+"I understand. Is the issue that there is no staffing budget available, or that the current hiring need hasn't justified bringing in another resource?",
+"If an open position is sitting unfilled, how are you currently absorbing the cost of that vacancy?",
+"If we could solve a difficult-to-fill position without creating unnecessary cost, would you be open to evaluating it?"
+]
+},
+
+{
+title:"Send Information",
+responses:[
+"Absolutely. I'll send something over. So I make it relevant, what type of positions are you hiring for most frequently?",
+"Happy to. Before I send it, what would you want the information to help you evaluate?",
+"Absolutely. I'll send that over. When would be a good time for me to follow up after you've had a chance to review it?"
+]
+},
+
+{
+title:"Not Interested",
+responses:[
+"I understand. Before I let you go, may I ask what would need to change for staffing support to become worth considering?",
+"Fair enough. Is that because you're fully staffed right now, or because you're satisfied with your current recruiting process?",
+"Understood. Would it be alright if I asked one quick question so I don't follow up unnecessarily?"
+]
+},
+
+{
+title:"We're Not Hiring",
+responses:[
+"Understood. Are there certain positions you typically have difficulty filling when hiring picks back up?",
+"That makes sense. When hiring does increase, what types of positions usually take the longest to fill?",
+"Understood. Would it be helpful to know who handles staffing when hiring needs increase?"
+]
+},
+
+{
+title:"We Hire Internally",
+responses:[
+"That makes sense. Do you ever use outside staffing support when internal recruiting can't fill a position quickly enough?",
+"Absolutely. Many companies handle most recruiting internally. Where we typically help is with volume or hard-to-fill positions. Do you have any of those?",
+"Understood. Are there situations where your internal team gets overwhelmed by the number of openings?"
+]
+},
+
+{
+title:"Rates Are Too High",
+responses:[
+"I understand cost is important. Besides price, what would you need from a staffing partner to make the relationship worthwhile?",
+"That makes sense. If the position remains open longer, how does that affect the business?",
+"Understood. Would it make sense to compare the cost of the staffing service against the cost of leaving the position open?"
+]
+}
+
+];
+
+let valueBank = [
+
+{
+title:"Reduce Time-to-Fill",
+text:"Focus on how quickly critical positions can be filled and how long the company has already been carrying the vacancy."
+},
+
+{
+title:"Open Positions",
+text:"Multiple openings can indicate a larger staffing opportunity, especially when the company is struggling to keep up with hiring demand."
+},
+
+{
+title:"Hard-to-Fill Roles",
+text:"Hard-to-fill positions are an opportunity to position staffing as an additional recruiting resource."
+},
+
+{
+title:"Operational Impact",
+text:"Ask what happens to productivity, overtime, schedules or customer service when positions remain open."
+},
+
+{
+title:"Recruiting Workload",
+text:"A staffing partner can help reduce sourcing and screening workload for an internal HR team."
+},
+
+{
+title:"Urgent Hiring",
+text:"Urgent positions create an opportunity to focus the conversation on speed and getting qualified people into the role."
+}
+
+];
+
+let currentAccountId = null;
+
+
+/* =========================
+NAVIGATION
+========================= */
+
+function hideAll(){
+
+[
+"dashboard",
+"addProspect",
+"account",
+"reports",
+"templates",
+"objectionManager"
+
+].forEach(id=>{
+document.getElementById(id).classList.add("hidden");
+});
+
+}
+
+function showDashboard(){
+
+hideAll();
+
+document.getElementById("dashboard").classList.remove("hidden");
+
+renderProspects();
+updateKPIs();
+
+}
+
+function showAddProspect(){
+
+hideAll();
+
+document.getElementById("addProspect").classList.remove("hidden");
+
+}
+
+function showAccount(id){
+
+currentAccountId=id;
+
+hideAll();
+
+document.getElementById("account").classList.remove("hidden");
+
+renderAccount();
+
+}
+
+function showReports(){
+
+hideAll();
+
+document.getElementById("reports").classList.remove("hidden");
+
+renderReports();
+
+}
+
+function showTemplates(){
+
+hideAll();
+
+document.getElementById("templates").classList.remove("hidden");
+
+renderTemplates();
+
+}
+
+function showObjectionManager(){
+
+hideAll();
+
+document.getElementById("objectionManager").classList.remove("hidden");
+
+renderObjectionManager();
+
+}
+
+
+/* =========================
+CREATE PROSPECT
+========================= */
+
+function createProspect(){
+
+let company=document.getElementById("newCompany").value.trim();
+
+if(!company){
+
+alert("Company name is required.");
+
+return;
+
+}
+
+let prospect={
+
+id:Date.now(),
+
+company,
+
+industry:document.getElementById("newIndustry").value,
+
+location:document.getElementById("newLocation").value.trim(),
+
+positions:parseInt(document.getElementById("newPositions").value)||0,
+
+days:parseInt(document.getElementById("newDays").value)||0,
+
+signal:document.getElementById("newSignal").value,
+
+notes:document.getElementById("newNotes").value.trim(),
+
+contacts:[],
+
+calls:[],
+
+followups:[]
+
+};
+
+let contact=document.getElementById("newContact").value.trim();
+
+if(contact){
+
+prospect.contacts.push({
+
+id:Date.now()+1,
+
+name:contact,
+
+title:document.getElementById("newTitle").value.trim(),
+
+phone:document.getElementById("newPhone").value.trim(),
+
+email:document.getElementById("newEmail").value.trim()
+
+});
+
+}
+
+prospects.push(prospect);
+
+saveData();
+
+clearAddForm();
+
+showAccount(prospect.id);
+
+}
+
+
+/* =========================
+STORAGE
+========================= */
+
+function saveData(){
+
+localStorage.setItem(
+"staffingProspectsFinal",
+JSON.stringify(prospects)
+);
+
+localStorage.setItem(
+"staffingTemplatesFinal",
+JSON.stringify(templates)
+);
+
+localStorage.setItem(
+"staffingObjectionsFinal",
+JSON.stringify(objections)
+);
+
+}
+
+
+/* =========================
+OPPORTUNITY SCORE
+========================= */
+
+function getOpportunity(p){
+
+let score=0;
+
+/* OPEN POSITIONS */
+
+if(p.positions>=20) score+=40;
+else if(p.positions>=10) score+=35;
+else if(p.positions>=5) score+=25;
+else if(p.positions>=3) score+=18;
+else if(p.positions>=1) score+=10;
+
+/* DAYS OPEN */
+
+if(p.days>=90) score+=30;
+else if(p.days>=60) score+=25;
+else if(p.days>=30) score+=18;
+else if(p.days>=14) score+=10;
+
+/* SIGNAL */
+
+if(
+p.signal==="Urgent Hiring"
+) score+=15;
+
+else if(
+p.signal==="Hard-to-Fill Position"
+) score+=15;
+
+else if(
+p.signal==="High Turnover"
+) score+=12;
+
+else if(
+p.signal==="Expansion"
+) score+=10;
+
+else if(
+p.signal==="Multiple Openings"
+) score+=10;
+
+/* CONTACT */
+
+if(p.contacts.length>=2) score+=5;
+else if(p.contacts.length===1) score+=2;
+
+return Math.min(score,100);
+
+}
+
+function opportunityLabel(score){
+
+if(score>=75)
+return "Strong opportunity to pursue";
+
+if(score>=50)
+return "Worth pursuing";
+
+if(score>=30)
+return "Possible opportunity";
+
+return "Low priority";
+
+}
+
+
+/* =========================
+PROSPECT TABLE
+========================= */
+
+function renderProspects(){
+
+let table=document.getElementById("prospectTable");
+
+let search=
+(document.getElementById("prospectSearch")?.value||"")
+.toLowerCase();
+
+let filtered=prospects.filter(p=>{
+
+let contactText=p.contacts.map(c=>
+`${c.name} ${c.title} ${c.phone} ${c.email}`
+).join(" ");
+
+return `${p.company} ${p.industry} ${contactText}`
+.toLowerCase()
+.includes(search);
+
+});
+
+if(!filtered.length){
+
+table.innerHTML=`
+<tr>
+<td colspan="7" class="empty">
+No prospects yet. Add your first account.
+</td>
+</tr>`;
+
+return;
+
+}
+
+table.innerHTML=filtered.map(p=>{
+
+let score=getOpportunity(p);
+
+return `
+
+<tr>
+
+<td>
+<span class="company-link"
+onclick="showAccount(${p.id})">
+${escapeHTML(p.company)}
+</span>
+</td>
+
+<td>${p.contacts.length}</td>
+
+<td>${escapeHTML(p.industry)}</td>
+
+<td>${p.positions}</td>
+
+<td>${p.days} days</td>
+
+<td>
+<span class="badge ${
+score>=75
+?"badge-good"
+:score>=50
+?"badge-medium"
+:"badge-low"
+}">
+${score}% pursue
+</span>
+</td>
+
+<td>${p.calls.length} calls</td>
+
+</tr>
+
+`;
+
+}).join("");
+
+}
+
+
+/* =========================
+ACCOUNT PAGE
+========================= */
+
+function renderAccount(){
+
+let p=prospects.find(x=>x.id===currentAccountId);
+
+if(!p)return;
+
+let score=getOpportunity(p);
+
+document.getElementById("accountContent").innerHTML=`
+
+<div class="account-header">
+
+<div>
+
+<div class="account-title">
+${escapeHTML(p.company)}
+</div>
+
+<div class="account-meta">
+${escapeHTML(p.industry)}
+${p.location?" • "+escapeHTML(p.location):""}
+</div>
+
+</div>
+
+<div class="account-actions">
+
+<button class="btn btn-primary"
+onclick="startCall()">
+📞 Call
+</button>
+
+<button class="btn btn-light"
+onclick="generateEmail()">
+✉️ Email
+</button>
+
+<button class="btn btn-light"
+onclick="addContact()">
++ Add Contact
+</button>
+
+</div>
+
+</div>
+
+
+<!-- VALUE VAULT -->
+
+<div class="value-vault">
+
+<h2>💼 Value Vault</h2>
+
+<div class="vault-grid">
+
+<div class="vault-item">
+<small>Open Positions</small>
+<strong>${p.positions}</strong>
+</div>
+
+<div class="vault-item">
+<small>Oldest Opening</small>
+<strong>${p.days} days</strong>
+</div>
+
+<div class="vault-item">
+<small>Opportunity</small>
+<strong class="opportunity">${score}%</strong>
+</div>
+
+<div class="vault-item">
+<small>Recommendation</small>
+<strong>${opportunityLabel(score)}</strong>
+</div>
+
+</div>
+
+<br>
+
+<strong>Hiring Signal:</strong>
+${escapeHTML(p.signal)}
+
+<br><br>
+
+<strong>Account Intelligence:</strong>
+
+<p>
+${escapeHTML(p.notes||"No account intelligence entered yet.")}
+</p>
+
+</div>
+
+
+<!-- CONTACTS -->
+
+<div class="panel">
+
+<h2>👥 Contacts</h2>
+
+${p.contacts.length?
+
+p.contacts.map(c=>`
+
+<div class="contact-card">
+
+<strong>${escapeHTML(c.name)}</strong>
+
+${c.title?
+`<div>${escapeHTML(c.title)}</div>`:""}
+
+${c.phone?
+`<div>📞 ${escapeHTML(c.phone)}</div>`:""}
+
+${c.email?
+`<div>✉️ ${escapeHTML(c.email)}</div>`:""}
+
+<div class="contact-actions">
+
+<button class="btn btn-light"
+onclick="startCall(${c.id})">
+📞 Call This Contact
+</button>
+
+</div>
+
+</div>
+
+`).join("")
+
+:
+
+`<div class="empty">
+No contacts added yet.
+</div>`
+
+}
+
+</div>
+
+
+<!-- CALL WORKSPACE -->
+
+<div id="callWorkspace"></div>
+
+
+<!-- HISTORY -->
+
+<div class="panel">
+
+<h2>🧠 Account History</h2>
+
+${renderHistory(p)}
+
+</div>
+
+`;
+
+}
+
+
+/* =========================
+ADD CONTACT
+========================= */
+
+function addContact(){
+
+let p=prospects.find(x=>x.id===currentAccountId);
+
+if(!p)return;
+
+let name=prompt("Contact name:");
+
+if(!name)return;
+
+let title=prompt("Contact title:");
+
+let phone=prompt("Phone:");
+
+let email=prompt("Email:");
+
+p.contacts.push({
+
+id:Date.now(),
+
+name,
+
+title:title||"",
+
+phone:phone||"",
+
+email:email||""
+
+});
+
+saveData();
+
+renderAccount();
+
+}
+
+
+/* =========================
+CALL WORKSPACE
+========================= */
+
+function startCall(contactId=null){
+
+let p=prospects.find(x=>x.id===currentAccountId);
+
+if(!p)return;
+
+let workspace=document.getElementById("callWorkspace");
+
+workspace.innerHTML=`
+
+<div class="panel call-workspace">
+
+<h2>📞 Call Workspace</h2>
+
+<!-- VALUE STAYS VISIBLE -->
+
+<div class="value-vault">
+
+<h2>💼 Value While You Call</h2>
+
+<div class="vault-grid">
+
+<div class="vault-item">
+<small>Open Positions</small>
+<strong>${p.positions}</strong>
+</div>
+
+<div class="vault-item">
+<small>Oldest Opening</small>
+<strong>${p.days} days</strong>
+</div>
+
+<div class="vault-item">
+<small>Opportunity</small>
+<strong>${getOpportunity(p)}%</strong>
+</div>
+
+<div class="vault-item">
+<small>Signal</small>
+<strong>${escapeHTML(p.signal)}</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="prompt-box">
+
+<h3>🎯 Discovery Questions</h3>
+
+<p>"What positions are proving the most difficult for your team to fill right now?"</p>
+
+<p>"How long have those positions been open?"</p>
+
+<p>"What happens operationally when those roles remain unfilled?"</p>
+
+<p>"Are you currently using a staffing partner for any of those positions?"</p>
+
+</div>
+
+
+<div class="prompt-box">
+
+<h3>💬 Live Objections</h3>
+
+<div class="objection-buttons">
+
+${objections.map((o,i)=>`
+
+<button class="btn btn-light"
+onclick="showObjection(${i})">
+${escapeHTML(o.title)}
+</button>
+
+`).join("")}
+
+</div>
+
+<div id="objectionResponse"
+class="objection-response">
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Contact</label>
+
+<select id="callContact">
+
+${p.contacts.map(c=>`
+
+<option value="${c.id}"
+${contactId===c.id?"selected":""}>
+
+${escapeHTML(c.name)}
+${c.title?" — "+escapeHTML(c.title):""}
+
+</option>
+
+`).join("")}
+
+</select>
+
+</div>
+
+<br>
+
+
+<div class="form-group">
+
+<label>Call Outcome</label>
+
+<select id="callOutcome">
+
+<option>Connected</option>
+<option>Voicemail</option>
+<option>No Answer</option>
+<option>Follow-Up Needed</option>
+<option>Meeting Booked</option>
+<option>Not Interested</option>
+<option>Wrong Contact</option>
+
+</select>
+
+</div>
+
+<br>
+
+<div class="form-group">
+
+<label>Call Notes</label>
+
+<textarea id="callNotes"
+placeholder="What did they say? Capture pain points, hiring needs, objections, decision makers and next steps."></textarea>
+
+</div>
+
+<br>
+
+<button class="btn btn-primary"
+onclick="saveCall()">
+Save Call
+</button>
+
+<button class="btn btn-light"
+onclick="createFollowup()">
+📅 Create Follow-Up
+</button>
+
+</div>
+
+`;
+
+workspace.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================
+OBJECTIONS
+========================= */
+
+function showObjection(index){
+
+let o=objections[index];
+
+let box=document.getElementById("objectionResponse");
+
+if(!box)return;
+
+box.style.display="block";
+
+box.innerHTML=`
+
+<strong>Choose your response:</strong>
+
+${o.responses.map((r,i)=>`
+
+<div class="response-option">
+
+<strong>Response ${i+1}</strong>
+
+<p>${escapeHTML(r)}</p>
+
+<button class="btn btn-light"
+onclick='copyText(${JSON.stringify(r)})'>
+Copy Response
+</button>
+
+</div>
+
+`).join("")}
+
+`;
+
+}
+
+
+function copyText(text){
+
+if(navigator.clipboard){
+
+navigator.clipboard.writeText(text);
+
+alert("Response copied.");
+
+}else{
+
+prompt("Copy response:",text);
+
+}
+
+}
+
+
+/* =========================
+SAVE CALL
+========================= */
+
+function saveCall(){
+
+let p=prospects.find(x=>x.id===currentAccountId);
+
+if(!p)return;
+
+let contactSelect=document.getElementById("callContact");
+
+let contactId=contactSelect?
+Number(contactSelect.value):null;
+
+p.calls.push({
+
+id:Date.now(),
+
+date:new Date().toLocaleString(),
+
+contactId,
+
+outcome:document.getElementById("callOutcome").value,
+
+notes:document.getElementById("callNotes").value.trim()
+
+});
+
+saveData();
+
+renderAccount();
+
+alert("Call logged.");
+
+}
+
+
+/* =========================
+FOLLOW-UP
+========================= */
+
+function createFollowup(){
+
+let p=prospects.find(x=>x.id===currentAccountId);
+
+if(!p)return;
+
+let date=prompt(
+"Enter follow-up date (example: 2026-08-20):"
+);
+
+if(!date)return;
+
+let notes=prompt(
+"What should happen on this follow-up?"
+);
+
+p.followups.push({
+
+id:Date.now(),
+
+date,
+
+notes:notes||"Follow up with prospect."
+
+});
+
+saveData();
+
+renderAccount();
+
+alert("Follow-up created.");
+
+}
+
+
+/* =========================
+HISTORY
+========================= */
+
+function renderHistory(p){
+
+let items=[];
+
+p.calls.forEach(c=>{
+
+let contact=p.contacts.find(
+x=>x.id===c.contactId
+);
+
+items.push({
+
+date:c.date,
+
+type:"📞 Call",
+
+text:
+`${c.outcome}${contact?" — "+contact.name:""}`
++
+(c.notes?"\n"+c.notes:"")
+
+});
+
+});
+
+p.followups.forEach(f=>{
+
+items.push({
+
+date:f.date,
+
+type:"📅 Follow-Up",
+
+text:f.notes
+
+});
+
+});
+
+if(!items.length){
+
+return `
+<div class="empty">
+No activity recorded yet.
+</div>
+`;
+
+}
+
+return items.map(i=>`
+
+<div class="history-item">
+
+<strong>${i.type}</strong>
+
+<br>
+
+<small>${escapeHTML(i.date)}</small>
+
+<p>${escapeHTML(i.text)}</p>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =========================
+EMAIL
+========================= */
+
+function generateEmail(){
+
+let p=prospects.find(x=>x.id===currentAccountId);
+
+if(!p)return;
+
+let contact=p.contacts[0];
+
+let body=`Subject: Staffing support for ${p.company}
+
+Hi ${contact?.name||"there"},
+
+I wanted to reach out regarding your current hiring needs at ${p.company}.
+
+I noticed you currently have ${p.positions} open position(s), with the oldest opening at approximately ${p.days} days.
+
+I'd be happy to learn more about the positions you're having the most difficulty filling and see whether our staffing resources could help.
+
+Would you be open to a quick conversation?
+
+Best,
+Asia`;
+
+alert(body);
+
+}
+
+
+/* =========================
+TEMPLATES
+========================= */
+
+function renderTemplates(){
+
+document.getElementById("templateList").innerHTML=
+
+templates.map((t,i)=>`
+
+<div class="template-card">
+
+<h3>${escapeHTML(t.name)}</h3>
+
+<p>
+<strong>Subject:</strong>
+${escapeHTML(t.subject)}
+</p>
+
+<textarea readonly>${escapeHTML(t.body)}</textarea>
+
+<br><br>
+
+<button class="btn btn-light"
+onclick='copyText(${JSON.stringify(t.body)})'>
+Copy Template
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+function saveTemplate(){
+
+let name=document.getElementById("templateName").value.trim();
+
+let subject=document.getElementById("templateSubject").value.trim();
+
+let body=document.getElementById("templateBody").value.trim();
+
+if(!name||!subject||!body){
+
+alert("Complete all fields.");
+
+return;
+
+}
+
+templates.push({
+
+name,
+
+subject,
+
+body
+
+});
+
+saveData();
+
+document.getElementById("templateName").value="";
+
+document.getElementById("templateSubject").value="";
+
+document.getElementById("templateBody").value="";
+
+renderTemplates();
+
+}
+
+
+/* =========================
+CUSTOM OBJECTIONS
+========================= */
+
+function renderObjectionManager(){
+
+document.getElementById("objectionManagerList").innerHTML=
+
+objections.map((o,i)=>`
+
+<div class="custom-card">
+
+<strong>${escapeHTML(o.title)}</strong>
+
+${o.responses.map((r,n)=>`
+
+<p>
+<strong>Response ${n+1}:</strong><br>
+${escapeHTML(r)}
+</p>
+
+`).join("")}
+
+</div>
+
+`).join("");
+
+}
+
+
+function saveCustomObjection(){
+
+let title=
+document.getElementById("managerObjection")
+.value.trim();
+
+let response=
+document.getElementById("managerResponse")
+.value.trim();
+
+if(!title||!response){
+
+alert("Enter the objection and response.");
+
+return;
+
+}
+
+objections.push({
+
+title,
+
+responses:[response]
+
+});
+
+saveData();
+
+document.getElementById("managerObjection").value="";
+
+document.getElementById("managerResponse").value="";
+
+renderObjectionManager();
+
+alert("Objection saved.");
+
+}
+
+
+/* =========================
+REPORTS
+========================= */
+
+function renderReports(){
+
+let totalCalls=0;
+let totalFollowups=0;
+let meetings=0;
+let connected=0;
+let totalPositions=0;
+
+prospects.forEach(p=>{
+
+totalCalls+=p.calls.length;
+
+totalFollowups+=p.followups.length;
+
+totalPositions+=p.positions;
+
+p.calls.forEach(c=>{
+
+if(c.outcome==="Meeting Booked")
+meetings++;
+
+if(c.outcome==="Connected")
+connected++;
+
+});
+
+});
+
+let avgOpportunity=prospects.length?
+
+Math.round(
+prospects.reduce(
+(sum,p)=>sum+getOpportunity(p),0
+)/prospects.length
+):0;
+
+let strongest=
+[...prospects]
+.sort(
+(a,b)=>getOpportunity(b)-getOpportunity(a)
+)
+.slice(0,5);
+
+document.getElementById("reportContent").innerHTML=`
+
+<div class="report-grid">
+
+<div class="report-card">
+Smallest Pipeline Metric
+<strong>${prospects.length}</strong>
+<p>Total prospects</p>
+</div>
+
+<div class="report-card">
+Open Positions
+<strong>${totalPositions}</strong>
+<p>Across all prospects</p>
+</div>
+
+<div class="report-card">
+Average Opportunity
+<strong>${avgOpportunity}%</strong>
+<p>Average pursue score</p>
+</div>
+
+<div class="report-card">
+Calls
+<strong>${totalCalls}</strong>
+<p>Total calls logged</p>
+</div>
+
+<div class="report-card">
+Connected
+<strong>${connected}</strong>
+<p>Connected conversations</p>
+</div>
+
+<div class="report-card">
+Meetings
+<strong>${meetings}</strong>
+<p>Meetings booked</p>
+</div>
+
+</div>
+
+<br>
+
+<div class="panel">
+
+<h2>🏆 Highest Opportunity Accounts</h2>
+
+${
+strongest.length?
+
+strongest.map(p=>`
+
+<div class="history-item">
+
+<strong>
+<span class="company-link"
+onclick="showAccount(${p.id})">
+${escapeHTML(p.company)}
+</span>
+</strong>
+
+<p>
+${getOpportunity(p)}% opportunity —
+${p.positions} open positions —
+${p.days} days oldest opening
+</p>
+
+</div>
+
+`).join("")
+
+:
+
+`<div class="empty">
+Add prospects to begin building reports.
+</div>`
+
+}
+
+</div>
+
+<div class="panel">
+
+<h2>📈 Pipeline Insight</h2>
+
+<p>
+Your opportunity percentage is based primarily on the number of
+open positions and how long those positions have remained open,
+with additional weight for hiring signals and contact coverage.
+</p>
+
+<p>
+The purpose is to help you decide where to spend your selling time,
+not simply label a company as hot or cold.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================
+KPI
+========================= */
+
+function updateKPIs(){
+
+let contacts=0;
+let calls=0;
+let followups=0;
+let meetings=0;
+
+prospects.forEach(p=>{
+
+contacts+=p.contacts.length;
+
+calls+=p.calls.length;
+
+followups+=p.followups.length;
+
+meetings+=p.calls.filter(
+c=>c.outcome==="Meeting Booked"
+).length;
+
+});
+
+document.getElementById("kpiProspects").textContent=
+prospects.length;
+
+document.getElementById("kpiContacts").textContent=
+contacts;
+
+document.getElementById("kpiCalls").textContent=
+calls;
+
+document.getElementById("kpiFollowups").textContent=
+followups;
+
+document.getElementById("kpiMeetings").textContent=
+meetings;
+
+}
+
+
+/* =========================
+CLEAR FORM
+========================= */
+
+function clearAddForm(){
+
+[
+"newCompany",
+"newLocation",
+"newPositions",
+"newDays",
+"newNotes",
+"newContact",
+"newTitle",
+"newPhone",
+"newEmail"
+].forEach(id=>{
+
+document.getElementById(id).value="";
+
+});
+
+document.getElementById("newSignal").value=
+"Multiple Openings";
+
+}
+
+
+/* =========================
+SECURITY
+========================= */
+
+function escapeHTML(value){
+
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+START
+========================= */
+
+renderProspects();
+updateKPIs();
+
+</script>
+
+</body>
+</html>
